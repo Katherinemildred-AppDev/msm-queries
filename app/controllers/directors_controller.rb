@@ -11,6 +11,13 @@ class DirectorsController< ApplicationController
     render({:template=> "director_templates/eldest.html.erb"})
   end
 
+
+  def baby
+    @youngest=Director.where.not({:dob=>nil}).order({:dob=>:desc}).at(0)
+    render({:template=> "director_templates/youngest.html.erb"})
+  end
+
+
   def director_details
     #params is like {"an_id"=>"42"}
 
